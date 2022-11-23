@@ -1,5 +1,9 @@
 package ee.valiit.back_vali_kuusk.product;
 
+import ee.valiit.back_vali_kuusk.domain.product.county.County;
+import ee.valiit.back_vali_kuusk.domain.product.county.CountyDto;
+import ee.valiit.back_vali_kuusk.domain.product.county.CountyMapper;
+import ee.valiit.back_vali_kuusk.domain.product.county.CountyRepository;
 import ee.valiit.back_vali_kuusk.domain.product.height.Height;
 import ee.valiit.back_vali_kuusk.domain.product.height.HeightDto;
 import ee.valiit.back_vali_kuusk.domain.product.height.HeightMapper;
@@ -22,12 +26,18 @@ public class ProductService {
     @Resource
     private HeightRepository heightRepository;
 
+    @Resource
+    private CountyRepository countyRepository;
+
 
     @Resource
     private TypeMapper typeMapper;
 
     @Resource
     private HeightMapper heightMapper;
+
+    @Resource
+    private CountyMapper countyMapper;
 
 
     public List<TypeDto> getAllTreeTypes() {
@@ -39,6 +49,12 @@ public class ProductService {
         List<Height> heights = heightRepository.findAll();
         List<HeightDto> heightDtos = heightMapper.heightsToHeightDtos(heights);
         return heightDtos;
+    }
+
+    public List<CountyDto> getAllCounties () {
+        List<County> counties = countyRepository.findAll();
+        List<CountyDto> countyDtos = countyMapper.countiesToCountyDtos(counties);
+        return countyDtos;
     }
 
 

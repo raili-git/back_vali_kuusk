@@ -1,5 +1,6 @@
 package ee.valiit.back_vali_kuusk.product;
 
+import ee.valiit.back_vali_kuusk.domain.product.county.CountyDto;
 import ee.valiit.back_vali_kuusk.domain.product.height.HeightDto;
 import ee.valiit.back_vali_kuusk.domain.product.type.TypeDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,6 +32,12 @@ public class ProductController {
         return productService.getAllTreeHeights();     // see on lühem versioon return'ida
 
 
+    }
+
+    @GetMapping("county")
+    @Operation (summary = "Selle teenusega saad kätte kõik maakonnad")
+    public List<CountyDto> getAllCounties() {
+        return productService.getAllCounties();
     }
 
 }
