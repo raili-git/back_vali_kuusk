@@ -1,6 +1,7 @@
 package ee.valiit.back_vali_kuusk.product;
 
-import ee.valiit.back_vali_kuusk.domain.product.TypeDto;
+import ee.valiit.back_vali_kuusk.domain.product.height.HeightDto;
+import ee.valiit.back_vali_kuusk.domain.product.type.TypeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,5 +25,12 @@ public class ProductController {
         return result;
     }
 
+    @GetMapping("/height")
+    @Operation(summary = "Selle teenusega saad kätte kõik kõrguste vahemikud")
+    public List<HeightDto> getAllTreeHeights() {
+        return productService.getAllTreeHeights();     // see on lühem versioon return'ida
+
+
+    }
 
 }

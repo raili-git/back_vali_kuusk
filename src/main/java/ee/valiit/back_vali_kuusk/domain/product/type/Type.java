@@ -1,4 +1,4 @@
-package ee.valiit.back_vali_kuusk.domain.product;
+package ee.valiit.back_vali_kuusk.domain.product.type;
 
 import lombok.Getter;
 import lombok.Setter;
