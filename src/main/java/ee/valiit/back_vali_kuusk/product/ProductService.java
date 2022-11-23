@@ -18,10 +18,12 @@ public class ProductService {
     @Resource
     private TypeMapper typeMapper;
 
+
     public List<TypeDto> getAllTreeTypes() {
         List<Type> types = typeRepository.findAll();
-        typeMapper.typesToTypeDtos(types);
-        return null;
+        List<TypeDto> typeDtos = typeMapper.typesToTypeDtos(types);
+        return typeDtos;
+
 
     }
 
