@@ -1,8 +1,10 @@
-package ee.valiit.back_vali_kuusk.domain.userrole.user;
+package ee.valiit.back_vali_kuusk.business.login;
 
+import ee.valiit.back_vali_kuusk.domain.userrole.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -11,6 +13,7 @@ import java.io.Serializable;
 /**
  * A DTO for the {@link User} entity
  */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

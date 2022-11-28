@@ -16,11 +16,11 @@ public class LoginController {
 
 
     @GetMapping("/login")
-    @Operation (summary = "Logib teenusesse sisse")
+    @Operation(summary = "Logib teenusesse sisse")
 
-    public void login(@RequestParam String username, @RequestParam String password) {
-      loginService.login (username,password);
-
+    public LoginResponse login(@RequestParam String username, @RequestParam String password) {
+        LoginResponse loginResponse = loginService.login(username, password);
+        return loginResponse;
     }
 
 }
