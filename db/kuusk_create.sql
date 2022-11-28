@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-23 07:56:26.026
+-- Last modification date: 2022-11-28 12:32:28.39
 
 -- tables
 -- Table: address
@@ -12,11 +12,11 @@ CREATE TABLE address (
 -- Table: contact
 CREATE TABLE contact (
                          id serial  NOT NULL,
-                         address_id int  NOT NULL,
                          phone_number varchar(255)  NOT NULL,
                          email varchar(255)  NOT NULL,
                          first_name varchar(255)  NOT NULL,
                          last_name varchar(255)  NOT NULL,
+                         address_id int  NOT NULL,
                          CONSTRAINT contact_pk PRIMARY KEY (id)
 );
 
@@ -65,7 +65,6 @@ CREATE TABLE order_product (
 -- Table: product
 CREATE TABLE product (
                          id serial  NOT NULL,
-                         user_id int  NOT NULL,
                          type_id int  NOT NULL,
                          address_id int  NOT NULL,
                          county_id int  NOT NULL,
@@ -73,6 +72,7 @@ CREATE TABLE product (
                          status char(1)  NOT NULL,
                          image_data bytea  NOT NULL,
                          price int  NOT NULL,
+                         user_id int  NOT NULL,
                          CONSTRAINT product_pk PRIMARY KEY (id)
 );
 
@@ -93,10 +93,10 @@ CREATE TABLE type (
 -- Table: user
 CREATE TABLE "user" (
                         id serial  NOT NULL,
-                        contact_id int  NULL,
-                        role_id int  NOT NULL,
                         username varchar(255)  NOT NULL,
                         password varchar(255)  NOT NULL,
+                        contact_id int  NULL,
+                        role_id int  NOT NULL,
                         CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
@@ -190,12 +190,3 @@ ALTER TABLE "user" ADD CONSTRAINT user_role
 ;
 
 -- End of file.
-
-
-
-
-
-
-
-
-

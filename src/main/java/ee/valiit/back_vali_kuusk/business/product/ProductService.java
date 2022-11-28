@@ -1,4 +1,4 @@
-package ee.valiit.back_vali_kuusk.product;
+package ee.valiit.back_vali_kuusk.business.product;
 
 import ee.valiit.back_vali_kuusk.domain.product.county.County;
 import ee.valiit.back_vali_kuusk.domain.product.county.CountyDto;

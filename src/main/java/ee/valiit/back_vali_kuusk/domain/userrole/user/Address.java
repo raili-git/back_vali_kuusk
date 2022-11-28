@@ -1,9 +1,11 @@
-package ee.valiit.back_vali_kuusk.domain.user;
+package ee.valiit.back_vali_kuusk.domain.userrole.user;
+
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+@Data
 @Entity
 @Table(name = "address")
 public class Address {
@@ -17,20 +19,5 @@ public class Address {
     @Column(name = "street", nullable = false)
     private String street;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
 
 }

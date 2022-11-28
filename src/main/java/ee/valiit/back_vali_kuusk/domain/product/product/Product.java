@@ -3,12 +3,13 @@ package ee.valiit.back_vali_kuusk.domain.product.product;
 import ee.valiit.back_vali_kuusk.domain.product.county.County;
 import ee.valiit.back_vali_kuusk.domain.product.height.Height;
 import ee.valiit.back_vali_kuusk.domain.product.type.Type;
-import ee.valiit.back_vali_kuusk.domain.user.Address;
+import ee.valiit.back_vali_kuusk.domain.userrole.user.Address;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+@Data
 @Entity
 @Table(name = "product")
 public class Product {
@@ -50,68 +51,5 @@ public class Product {
     @Column(name = "price", nullable = false)
     private Integer price;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public County getCounty() {
-        return county;
-    }
-
-    public void setCounty(County county) {
-        this.county = county;
-    }
-
-    public Height getHeight() {
-        return height;
-    }
-
-    public void setHeight(Height height) {
-        this.height = height;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public byte[] getImageData() {
-        return imageData;
-    }
-
-    public void setImageData(byte[] imageData) {
-        this.imageData = imageData;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
 
 }

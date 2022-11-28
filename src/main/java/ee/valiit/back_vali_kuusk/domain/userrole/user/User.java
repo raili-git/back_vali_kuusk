@@ -1,9 +1,12 @@
-package ee.valiit.back_vali_kuusk.domain.user;
+package ee.valiit.back_vali_kuusk.domain.userrole.user;
+
+import ee.valiit.back_vali_kuusk.domain.userrole.role.Role;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+@Data
 @Entity
 @Table(name = "\"user\"")
 public class User {
@@ -26,36 +29,11 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    public Integer getId() {
-        return id;
-    }
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public Contact getContact() {
-        return contact;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
 }
