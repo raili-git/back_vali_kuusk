@@ -23,5 +23,6 @@ INSERT INTO public.type (id, name) VALUES (DEFAULT, 'Kuusk');
 INSERT INTO public.type (id, name) VALUES (DEFAULT, 'Nulg');
 INSERT INTO public.type (id, name) VALUES (DEFAULT, 'Mänd');
 
+INSERT INTO public."user" (id, username, password, contact_id, role_id) VALUES (DEFAULT, 'seller', '123', null, 1);
 
 
