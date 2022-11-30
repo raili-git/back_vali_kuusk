@@ -13,4 +13,14 @@ public class Validation {
                     ValiKuuskError.INCORRECT_CREDENTIALS.getErrorCode());
         }
     }
+
+    public static void validateUsernameAvailable(boolean userNameExists) {
+        if (userNameExists) {
+            throw  new BusinessException(
+                    ValiKuuskError.USERNAME_TAKEN.getMessage(),
+                    ValiKuuskError.USERNAME_TAKEN.getErrorCode());
+
+            // 11/30/2022 throw error
+        }
+    }
 }

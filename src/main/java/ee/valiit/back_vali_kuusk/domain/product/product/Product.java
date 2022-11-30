@@ -4,6 +4,7 @@ import ee.valiit.back_vali_kuusk.domain.product.county.County;
 import ee.valiit.back_vali_kuusk.domain.product.height.Height;
 import ee.valiit.back_vali_kuusk.domain.product.type.Type;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.Address;
+import ee.valiit.back_vali_kuusk.domain.userrole.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -52,4 +53,16 @@ public class Product {
     private Integer price;
 
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

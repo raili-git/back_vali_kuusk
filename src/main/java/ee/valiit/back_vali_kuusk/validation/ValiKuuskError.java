@@ -4,7 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum ValiKuuskError {
-    INCORRECT_CREDENTIALS("Sellist kasutajanime või parooli ei leitud","666");
+    INCORRECT_CREDENTIALS("Sellist kasutajanime või parooli ei leitud","666"),
+    USERNAME_TAKEN("Selline kasutjanimi on juba kasutusel! Vali uus.","111");
 
     private final String message;
     private final String errorCode;
