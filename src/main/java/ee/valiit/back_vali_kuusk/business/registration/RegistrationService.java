@@ -1,7 +1,7 @@
 package ee.valiit.back_vali_kuusk.business.registration;
 
 
-import ee.valiit.back_vali_kuusk.domain.userrole.user.UserMapper;
+import ee.valiit.back_vali_kuusk.business.login.LoginResponse;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.UserService;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +15,9 @@ public class RegistrationService {
     @Resource
     public UserService userService;
 
-    public RegisterResponse registerNewUser(RegisterRequest request) {
+    public LoginResponse registerNewUser(RegisterRequest request) {
         userService.controlUsernameExists (request);
-        userService.saveNewUser(request);
+        LoginResponse loginResponse = userService.saveNewUser(request);
 
         // 11/30/2022 peate saama kätte boolean 'userExists'  (UserService->UserRepository)
         // 11/30/2022 valideerida ja visata viga kui kasutajanimi on juba hõivatud
@@ -28,7 +28,7 @@ public class RegistrationService {
         // TODO: 11/30/2022 nüüd on user objektil olemas id väärtus
         // TODO: 11/30/2022 Nüüd on vaja luua objekt RegisterResponse klassist ja panna "userId" väljale user.getId()ga külge
         // TODO: 11/30/2022 tagastate registerResponse objekti
-        return null;
+        return loginResponse;
     }
 
 

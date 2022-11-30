@@ -12,8 +12,9 @@ public interface UserMapper {
 
     @Mapping(source ="username", target = "username" )
     @Mapping(source = "password", target = "password")
-    @Mapping(source = "roleType", target = "role.type")
     User registerRequestToUser (RegisterRequest request);
+
+
 }
 
 
