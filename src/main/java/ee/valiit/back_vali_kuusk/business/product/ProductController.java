@@ -34,7 +34,7 @@ public class ProductController {
 
     }
 
-    @GetMapping("county")
+    @GetMapping("/county")
     @Operation (summary = "Selle teenusega saad kätte kõik maakonnad")
     public List<CountyDto> getAllCounties() {
         return productService.getAllCounties();
