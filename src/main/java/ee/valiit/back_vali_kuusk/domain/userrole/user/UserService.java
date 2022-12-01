@@ -41,7 +41,7 @@ public class UserService {
         User user = userMapper.registerRequestToUser(request); // mäpime DTO entitiks ja paneme selle uude objekti, ehk teeme uue kasutaja rea
         Role role = roleService.getRoleByType("seller"); //userile on vaja anda roll
         user.setRole(role); // anname userile juurde rolli
-        userRepository.save(user); //salvestame useri koos username, password ja roleType'ga DB tabelisse
+        userRepository.save(user); //salvestame useri koos username, password ja roleType'ga DB tabelisse, nüüd on user objektil olemas id väärtus
         LoginResponse loginResponse = userMapper.toLoginResponse(user);
 
         return loginResponse;
