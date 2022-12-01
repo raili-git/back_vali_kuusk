@@ -2,6 +2,7 @@ package ee.valiit.back_vali_kuusk.domain.userrole.user;
 
 import ee.valiit.back_vali_kuusk.business.login.LoginResponse;
 import ee.valiit.back_vali_kuusk.business.registration.RegisterRequest;
+import ee.valiit.back_vali_kuusk.domain.product.county.County;
 import ee.valiit.back_vali_kuusk.domain.userrole.role.Role;
 import ee.valiit.back_vali_kuusk.domain.userrole.role.RoleService;
 import ee.valiit.back_vali_kuusk.validation.Validation;
@@ -32,7 +33,7 @@ public class UserService {
     }
 
 
-    public void controlUsernameExists(RegisterRequest request) {
+    public void validateUsernameAllowed(RegisterRequest request) {
         boolean exists = userRepository.existsBy(request.getUsername());
         Validation.validateUsernameAvailable(exists);
     }

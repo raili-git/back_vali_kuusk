@@ -1,5 +1,6 @@
-package ee.valiit.back_vali_kuusk.domain.userrole.user;
+package ee.valiit.back_vali_kuusk.domain.userrole.user.contact;
 
+import ee.valiit.back_vali_kuusk.domain.userrole.user.address.Address;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,10 +10,16 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "contact")
 public class Contact {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
 
     @Size(max = 255)
     @NotNull
@@ -34,10 +41,6 @@ public class Contact {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "address_id", nullable = false)
-    private Address address;
 
 
 

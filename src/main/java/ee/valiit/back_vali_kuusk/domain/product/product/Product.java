@@ -3,7 +3,7 @@ package ee.valiit.back_vali_kuusk.domain.product.product;
 import ee.valiit.back_vali_kuusk.domain.product.county.County;
 import ee.valiit.back_vali_kuusk.domain.product.height.Height;
 import ee.valiit.back_vali_kuusk.domain.product.type.Type;
-import ee.valiit.back_vali_kuusk.domain.userrole.user.Address;
+import ee.valiit.back_vali_kuusk.domain.userrole.user.address.Address;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.User;
 import lombok.Data;
 
