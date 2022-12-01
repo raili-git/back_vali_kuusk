@@ -16,7 +16,7 @@ public class RegistrationService {
     public UserService userService;
 
     public LoginResponse registerNewUser(RegisterRequest request) {
-        userService.controlUsernameExists (request);
+        userService.validateUsernameAllowed(request);
         LoginResponse loginResponse = userService.saveNewUser(request);
 
         // 11/30/2022 peate saama kätte boolean 'userExists'  (UserService->UserRepository)

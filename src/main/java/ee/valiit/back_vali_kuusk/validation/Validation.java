@@ -21,6 +21,6 @@ public class Validation {
                     ValiKuuskError.USERNAME_TAKEN.getErrorCode());
 
             // 11/30/2022 throw error
-        }
+        } 
     }
 }

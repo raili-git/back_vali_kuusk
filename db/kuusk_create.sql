@@ -1,10 +1,11 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-11-28 12:32:28.39
+-- Last modification date: 2022-12-01 07:22:54.038
 
 -- tables
 -- Table: address
 CREATE TABLE address (
                          id serial  NOT NULL,
+                         county_id int  NOT NULL,
                          street varchar(255)  NOT NULL,
                          CONSTRAINT address_pk PRIMARY KEY (id)
 );
@@ -101,6 +102,14 @@ CREATE TABLE "user" (
 );
 
 -- foreign keys
+-- Reference: address_county (table: address)
+ALTER TABLE address ADD CONSTRAINT address_county
+    FOREIGN KEY (county_id)
+        REFERENCES county (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
 -- Reference: contact_address (table: contact)
 ALTER TABLE contact ADD CONSTRAINT contact_address
     FOREIGN KEY (address_id)

@@ -1,6 +1,7 @@
 package ee.valiit.back_vali_kuusk.domain.userrole.user;
 
 import ee.valiit.back_vali_kuusk.domain.userrole.role.Role;
+import ee.valiit.back_vali_kuusk.domain.userrole.user.contact.Contact;
 import lombok.Data;
 
 import javax.persistence.*;
