@@ -2,6 +2,8 @@ package ee.valiit.back_vali_kuusk.business.user;
 
 import ee.valiit.back_vali_kuusk.domain.product.county.County;
 import ee.valiit.back_vali_kuusk.domain.product.county.CountyService;
+import ee.valiit.back_vali_kuusk.domain.userrole.user.User;
+import ee.valiit.back_vali_kuusk.domain.userrole.user.UserService;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.address.Address;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.address.AddressService;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.contact.Contact;
@@ -22,6 +24,9 @@ public class ProfileService {
     public AddressService addressService;
 
     @Resource
+    public UserService userService;
+
+    @Resource
     private ContactMapper contactMapper;
 
     public void addProfileInfo(ProfileRequest request) {
@@ -30,6 +35,9 @@ public class ProfileService {
         Contact contact = contactMapper.toContact(request);
         contact.setAddress(address);
         contactService.addContact(contact);
+
+        User user = userService.findUserBy(request.getUserId());
+        userService.addNewUser(user, contact);
     }
 
 }

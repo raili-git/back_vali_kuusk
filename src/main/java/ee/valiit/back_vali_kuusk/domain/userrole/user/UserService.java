@@ -2,9 +2,9 @@ package ee.valiit.back_vali_kuusk.domain.userrole.user;
 
 import ee.valiit.back_vali_kuusk.business.login.LoginResponse;
 import ee.valiit.back_vali_kuusk.business.registration.RegisterRequest;
-import ee.valiit.back_vali_kuusk.domain.product.county.County;
 import ee.valiit.back_vali_kuusk.domain.userrole.role.Role;
 import ee.valiit.back_vali_kuusk.domain.userrole.role.RoleService;
+import ee.valiit.back_vali_kuusk.domain.userrole.user.contact.Contact;
 import ee.valiit.back_vali_kuusk.validation.Validation;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +49,13 @@ public class UserService {
     }
 
 
+    public User findUserBy(Integer userId) {
+        return userRepository.findById(userId).get();
+    }
+
+    public void addNewUser(User user, Contact contact) {
+        user.setContact(contact);
+        userRepository.save(user);
+    }
 
 }

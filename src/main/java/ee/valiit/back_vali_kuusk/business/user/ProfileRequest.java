@@ -17,7 +17,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfileRequest implements Serializable {
-
+    private Integer userId;
     @Size(max = 255)
     @NotNull
     private String phoneNumber;
