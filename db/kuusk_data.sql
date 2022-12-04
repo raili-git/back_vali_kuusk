@@ -23,6 +23,12 @@ INSERT INTO public.type (id, name) VALUES (DEFAULT, 'Kuusk');
 INSERT INTO public.type (id, name) VALUES (DEFAULT, 'Nulg');
 INSERT INTO public.type (id, name) VALUES (DEFAULT, 'Mänd');
 
-INSERT INTO public."user" (id, username, password, contact_id, role_id) VALUES (DEFAULT, 'seller', '123', null, 1);
+INSERT INTO public."user" (id, username, password, contact_id, role_id) VALUES (DEFAULT, 'seller', '123', 2, 1);
+INSERT INTO public."user" (id, username, password, contact_id, role_id) VALUES (DEFAULT, 'sigrid', '123', 1, 1);
 
+INSERT INTO public.address (id, county_id, street) VALUES (DEFAULT, 1, 'Turu 1');
+INSERT INTO public.address (id, county_id, street) VALUES (DEFAULT, 1, 'Kaubamaja 1');
+
+INSERT INTO public.contact (id, phone_number, email, first_name, last_name, address_id) VALUES (DEFAULT, '234', 'mail', 'Sigrid', 'Kaks', 1);
+INSERT INTO public.contact (id, phone_number, email, first_name, last_name, address_id) VALUES (DEFAULT, '345', 'mail', 'Seller', 'Brokkoli', 2);
 
