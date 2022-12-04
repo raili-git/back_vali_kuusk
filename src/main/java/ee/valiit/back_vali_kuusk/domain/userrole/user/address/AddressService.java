@@ -19,4 +19,7 @@ public class AddressService {
         return address;
     }
 
+    public Address findAddressBy(Integer addressId) {
+       return addressRepository.findById(addressId).get();
+    }
 }

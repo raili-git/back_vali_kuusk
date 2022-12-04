@@ -4,32 +4,31 @@ import ee.valiit.back_vali_kuusk.domain.product.county.CountyDto;
 import ee.valiit.back_vali_kuusk.domain.product.height.HeightDto;
 import ee.valiit.back_vali_kuusk.domain.product.type.TypeDto;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/shop")
+@RequestMapping("/product")
 public class ProductController {
 
     @Resource
-    private ProductService productService;
+    private TreeService treeService;
 
 
     @GetMapping("/type")
     @Operation(summary = "Selle teenusega saad kätte kõik puutüübid")
     public List<TypeDto> getAllTreeTypes() {
-        List<TypeDto> result = productService.getAllTreeTypes();
+        List<TypeDto> result = treeService.getAllTreeTypes();
         return result;
     }
 
     @GetMapping("/height")
     @Operation(summary = "Selle teenusega saad kätte kõik kõrguste vahemikud")
     public List<HeightDto> getAllTreeHeights() {
-        return productService.getAllTreeHeights();     // see on lühem versioon return'ida
+        return treeService.getAllTreeHeights();     // see on lühem versioon return'ida
 
 
     }
@@ -37,7 +36,14 @@ public class ProductController {
     @GetMapping("/county")
     @Operation (summary = "Selle teenusega saad kätte kõik maakonnad")
     public List<CountyDto> getAllCounties() {
-        return productService.getAllCounties();
+        return treeService.getAllCounties();
     }
+
+    @PostMapping("/new-tree")
+    @Operation(summary = "Selle teenusega saame lisada uue puu")
+    public void addNewTree(@RequestBody @Valid NewTreeRequest request){
+        treeService.addNewTree(request);
+    }
+
 
 }

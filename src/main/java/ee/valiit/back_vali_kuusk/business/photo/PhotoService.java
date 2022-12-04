@@ -1,6 +1,6 @@
 package ee.valiit.back_vali_kuusk.business.photo;
 
-import ee.valiit.back_vali_kuusk.business.product.ProductService;
+import ee.valiit.back_vali_kuusk.business.product.TreeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 public class PhotoService {
 
     @Resource
-    private ProductService productService; {
+    private TreeService treeService; {
 
     }
 }
