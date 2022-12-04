@@ -38,16 +38,6 @@ public class TreeService {
 
 
     @Resource
-    private TypeRepository typeRepository;
-
-    @Resource
-    private HeightRepository heightRepository;
-
-    @Resource
-    private CountyRepository countyRepository;
-
-
-    @Resource
     private TypeMapper typeMapper;
 
     @Resource
@@ -61,18 +51,20 @@ public class TreeService {
 
 
     public List<TypeDto> getAllTreeTypes() {
-        List<Type> types = typeRepository.findAll();
+        List<Type> types = typeService.findAll();
         List<TypeDto> typeDtos = typeMapper.typesToTypeDtos(types);
         return typeDtos;
     }
     public List<HeightDto> getAllTreeHeights() {
-        List<Height> heights = heightRepository.findAll();
+        List<Height> heights = heightService.findAll();
         List<HeightDto> heightDtos = heightMapper.heightsToHeightDtos(heights);
         return heightDtos;
     }
 
     public List<CountyDto> getAllCounties () {
-        List<County> counties = countyRepository.findAll();
+        List<County> counties = countyService.findAll();
+//        List<County> counties = countyRepository.findAll();
+//      Siin muutsin ära selle, et ei läheks otse TreeService-st repository vastu, vaid see toimub domain osas countyServic-es
         List<CountyDto> countyDtos = countyMapper.countiesToCountyDtos(counties);
         return countyDtos;
     }

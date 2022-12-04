@@ -7,8 +7,8 @@ import org.mapstruct.*;
 public interface ProductMapper {
     @Mapping(source = "typeId", target = "type.id")
     @Mapping(source = "heightId", target = "height.id")
-    @Mapping(source = "productStatus", target = "status")
-    @Mapping(source = "productImage", target = "imageData")
+//    @Mapping(source = "productStatus", target = "status")
+//    @Mapping(source = "productImage", target = "imageData")
     @Mapping(source = "productPrice", target = "price")
     @Mapping(source = "userId", target = "user.id")
 //    @Mapping(source = "userContactId", target = "contact.id")

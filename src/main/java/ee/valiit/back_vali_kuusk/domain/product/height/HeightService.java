@@ -3,6 +3,7 @@ package ee.valiit.back_vali_kuusk.domain.product.height;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class HeightService {
@@ -14,4 +15,10 @@ public class HeightService {
        return heightRepository.findById(heightId).get();
 
     }
+
+    public List<Height> findAll() {
+        List<Height> heights = heightRepository.findAll();
+        return heights;
+    }
 }
+
