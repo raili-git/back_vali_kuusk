@@ -13,6 +13,9 @@ public interface ProductMapper {
     @Mapping(source = "productImage", target = "imageData", qualifiedByName = "productImageToImageData")
     Product newTreeRequestToProduct(NewTreeRequest newTreeRequest);
 
+    @Mapping(source = "price", target = "productPrice")
+    ProductResponse toDto (Product product);
+
     @Named("productImageToImageData")
     static byte[] productImageToImageData(String productImage) {
         return productImage.getBytes(StandardCharsets.UTF_8);

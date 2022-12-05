@@ -2,6 +2,8 @@ package ee.valiit.back_vali_kuusk.business.product;
 
 import ee.valiit.back_vali_kuusk.domain.product.county.CountyDto;
 import ee.valiit.back_vali_kuusk.domain.product.height.HeightDto;
+import ee.valiit.back_vali_kuusk.domain.product.product.Product;
+import ee.valiit.back_vali_kuusk.domain.product.product.ProductMapper;
 import ee.valiit.back_vali_kuusk.domain.product.type.TypeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,9 @@ public class ProductController {
 
     @Resource
     private TreeService treeService;
+
+
+
 
 
     @GetMapping("/type")
@@ -40,8 +45,16 @@ public class ProductController {
     @PostMapping("/new-tree")
     @Operation(summary = "Selle teenusega saame lisada uue puu")
     public void addNewTree(@RequestBody @Valid NewTreeRequest request){
+
         treeService.addNewTree(request);
     }
 
+    @GetMapping("/trees/by-user")
+    @Operation(summary = "Selle teenusega kuvame kasutaja kõik puud userId järgi")
+    public List<Product> getAllTreesByUserId(@RequestParam Integer userId) {
+        List<Product> products = treeService.getAllTreesByUserId(userId);
 
+
+        return products;
+    }
 }

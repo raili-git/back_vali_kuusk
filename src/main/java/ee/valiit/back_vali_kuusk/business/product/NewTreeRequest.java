@@ -16,7 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class NewTreeRequest implements Serializable {
     private Integer userId;
-    private Integer countyId;
+//    private Integer countyId;
     private Integer typeId;
     private Integer heightId;
     private String productImage;

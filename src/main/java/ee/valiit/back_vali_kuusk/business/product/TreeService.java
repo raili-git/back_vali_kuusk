@@ -8,7 +8,6 @@ import ee.valiit.back_vali_kuusk.domain.product.product.ProductService;
 import ee.valiit.back_vali_kuusk.domain.product.type.*;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.User;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.UserService;
-import ee.valiit.back_vali_kuusk.domain.userrole.user.address.Address;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.address.AddressService;
 import org.springframework.stereotype.Service;
 
@@ -72,8 +71,8 @@ public class TreeService {
 
     public void addNewTree(NewTreeRequest request) {
         User user = userService.findUserBy(request.getUserId());
-        County county = countyService.findCountyBy(request.getCountyId());
-//        County county = user.getContact().getAddress().getCounty();
+//        County county = countyService.findCountyBy(request.getCountyId());
+        County county = user.getContact().getAddress().getCounty();
         Type type = typeService.findTypeBy(request.getTypeId());
         Height height = heightService.findHeightBy(request.getHeightId());
 
@@ -83,5 +82,14 @@ public class TreeService {
         product.setType(type);
         product.setHeight(height);
         productService.save(product);
+    }
+
+
+    public List<Product> getAllTreesByUserId(Integer userId) {
+        List<Product> products = productService.findTreesBy(userId);
+        productMapper.
+        return products;
+
+
     }
 }

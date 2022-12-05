@@ -1,9 +1,9 @@
 package ee.valiit.back_vali_kuusk.domain.product.product;
 
-import ee.valiit.back_vali_kuusk.business.product.NewTreeRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -17,5 +17,11 @@ public class ProductService {
 
     public void save(Product product) {
         productRepository.save(product);
+    }
+
+
+    public List<Product> findTreesBy(Integer userId) {
+        List<Product> products = productRepository.findTreesBy(userId);
+        return products;
     }
 }
