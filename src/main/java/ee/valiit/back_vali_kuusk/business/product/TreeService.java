@@ -71,21 +71,17 @@ public class TreeService {
 
 
     public void addNewTree(NewTreeRequest request) {
-        Product product = productMapper.newTreeRequestToProduct(request);
-        product.setPrice(request.getProductPrice());
-//        product.setImageData(request.getProductImage());
-        product.setStatus("A");
-        Type type = typeService.findTypeBy(request.getTypeId());
-        product.setType(type);
-        Height height = heightService.findHeightBy(request.getHeightId());
-        product.setHeight(height);
         User user = userService.findUserBy(request.getUserId());
-        product.setUser(user);
         County county = countyService.findCountyBy(request.getCountyId());
-        product.setCounty(county);
-        Address address = addressService.findAddressBy(request.getAddressId());
-        product.setAddress(address);
-        productService.save(product);
+//        County county = user.getContact().getAddress().getCounty();
+        Type type = typeService.findTypeBy(request.getTypeId());
+        Height height = heightService.findHeightBy(request.getHeightId());
 
+        Product product = productMapper.newTreeRequestToProduct(request);
+        product.setUser(user);
+        product.setCounty(county);
+        product.setType(type);
+        product.setHeight(height);
+        productService.save(product);
     }
 }

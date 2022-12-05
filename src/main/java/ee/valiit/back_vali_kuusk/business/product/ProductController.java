@@ -29,8 +29,6 @@ public class ProductController {
     @Operation(summary = "Selle teenusega saad kätte kõik kõrguste vahemikud")
     public List<HeightDto> getAllTreeHeights() {
         return treeService.getAllTreeHeights();     // see on lühem versioon return'ida
-
-
     }
 
     @GetMapping("/county")

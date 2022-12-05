@@ -50,6 +50,7 @@ CREATE TABLE "order" (
                          status char(1)  NOT NULL,
                          first_name varchar(255)  NOT NULL,
                          last_name varchar(255)  NOT NULL,
+                         address varchar(255)  NULL,
                          phone_number int  NOT NULL,
                          email varchar(255)  NOT NULL,
                          CONSTRAINT order_pk PRIMARY KEY (id)
@@ -67,7 +68,6 @@ CREATE TABLE order_product (
 CREATE TABLE product (
                          id serial  NOT NULL,
                          type_id int  NOT NULL,
-                         address_id int  NOT NULL,
                          county_id int  NOT NULL,
                          height_id int  NOT NULL,
                          status char(1)  NOT NULL,
@@ -142,13 +142,6 @@ ALTER TABLE order_product ADD CONSTRAINT order_product_product
             INITIALLY IMMEDIATE
 ;
 
--- Reference: product_address (table: product)
-ALTER TABLE product ADD CONSTRAINT product_address
-    FOREIGN KEY (address_id)
-        REFERENCES address (id)
-        NOT DEFERRABLE
-            INITIALLY IMMEDIATE
-;
 
 -- Reference: product_county (table: product)
 ALTER TABLE product ADD CONSTRAINT product_county

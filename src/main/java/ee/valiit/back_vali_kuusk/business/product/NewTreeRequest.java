@@ -15,14 +15,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NewTreeRequest implements Serializable {
+    private Integer userId;
+    private Integer countyId;
     private Integer typeId;
     private Integer heightId;
-//    @NotNull
-//    private byte[] productImage;
-    @NotNull
+    private String productImage;
     private Integer productPrice;
-    private Integer userId;
-    private Integer userContactId;
-    private Integer addressId;
-    private Integer countyId;
 }
