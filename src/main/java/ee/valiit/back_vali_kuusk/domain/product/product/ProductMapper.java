@@ -21,7 +21,7 @@ public interface ProductMapper {
     @Mapping(source = "height.gap", target = "heightGap")
     @Mapping(source = "price", target = "productPrice")
     ProductResponse productToProductResponse (Product product);
-    List<ProductResponse> productsToProductRepose(List<Product>products);
+    List<ProductResponse> productsToProductResponse(List<Product>products);
 
     @Named("productImageToImageData")
     static byte[] productImageToImageData(String productImage) {
@@ -36,5 +36,15 @@ public interface ProductMapper {
         String pictureAsString = new String(pictureDataAsByArray);
         return pictureAsString;
     }
+
+    @Mapping(source = "id", target = "productId")
+    @Mapping(source = "county.name", target = "countyName")
+    @Mapping(source = "imageData", target = "productImage", qualifiedByName = "byteArrayToString")
+    @Mapping(source = "type.name", target = "typeName")
+    @Mapping(source = "height.gap", target = "heightGap")
+    @Mapping(source = "price", target = "productPrice")
+    ShopResponse productToShopResponse (Product product);
+
+    List<ShopResponse> productsToShopResponse (List<Product>products);
 
 }

@@ -21,7 +21,18 @@ public class ProductService {
 
 
     public List<Product> findTreesBy(Integer userId) {
-        List<Product> products = productRepository.findTreesBy(userId);
+        List<Product> products = productRepository.findTreesBy(userId, "A");
+        return products;
+    }
+
+    public List<Product> finAll() {
+        List<Product> products = productRepository.findAll();
+
+        return products;
+    }
+
+    public List<Product> findTreesBy(Integer typeId, Integer heightId, Integer countyId) {
+        List<Product> products = productRepository.findProductBy(typeId, heightId, countyId);
         return products;
     }
 }

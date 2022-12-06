@@ -5,6 +5,7 @@ import ee.valiit.back_vali_kuusk.domain.product.height.*;
 import ee.valiit.back_vali_kuusk.domain.product.product.Product;
 import ee.valiit.back_vali_kuusk.domain.product.product.ProductMapper;
 import ee.valiit.back_vali_kuusk.domain.product.product.ProductService;
+import ee.valiit.back_vali_kuusk.domain.product.product.ShopResponse;
 import ee.valiit.back_vali_kuusk.domain.product.type.*;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.User;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.UserService;
@@ -87,9 +88,21 @@ public class TreeService {
 
     public List<ProductResponse> getAllTreesByUserId(Integer userId) {
         List<Product> products = productService.findTreesBy(userId);
-        List<ProductResponse> productsResponse = productMapper.productsToProductRepose(products);
+        List<ProductResponse> productsResponse = productMapper.productsToProductResponse(products);
         return productsResponse;
 
 
+    }
+
+    public List<ShopResponse> getAllTrees() {
+        List<Product> products = productService.finAll();
+        List<ShopResponse> productsToShopResponse = productMapper.productsToShopResponse(products);
+        return productsToShopResponse;
+    }
+
+    public List<ShopResponse> getProductsBySortingParameters(Integer typeId, Integer heightId, Integer countyId) {
+        List<Product> products = productService.findTreesBy(typeId, heightId, countyId);
+        List<ShopResponse> productsToShopResponse = productMapper.productsToShopResponse(products);
+        return productsToShopResponse;
     }
 }

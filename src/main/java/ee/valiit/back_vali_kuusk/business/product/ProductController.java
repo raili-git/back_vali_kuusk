@@ -2,6 +2,7 @@ package ee.valiit.back_vali_kuusk.business.product;
 
 import ee.valiit.back_vali_kuusk.domain.product.county.CountyDto;
 import ee.valiit.back_vali_kuusk.domain.product.height.HeightDto;
+import ee.valiit.back_vali_kuusk.domain.product.product.ShopResponse;
 import ee.valiit.back_vali_kuusk.domain.product.type.TypeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -41,16 +42,31 @@ public class ProductController {
     }
 
     @PostMapping("/new-tree")
-    @Operation(summary = "Selle teenusega saame lisada uue puu")
+    @Operation(summary = "Selle teenusega saab müüja lisada uue puu")
     public void addNewTree(@RequestBody @Valid NewTreeRequest request){
 
         treeService.addNewTree(request);
     }
 
     @GetMapping("/trees/by-user")
-    @Operation(summary = "Selle teenusega kuvame kasutaja kõik puud userId järgi")
+    @Operation(summary = "Selle teenusega kuvame müüja kõik puud 'userId' järgi")
     public List<ProductResponse> getAllTreesByUserId(@RequestParam Integer userId) {
         List<ProductResponse> productsReponse = treeService.getAllTreesByUserId(userId);
         return productsReponse;
     }
+
+    @GetMapping("/shop")
+    @Operation (summary = "Selle teenusega kuvame kõikide müüjate müügis olevad puud")
+    public List<ShopResponse> getAllTrees(){
+        List<ShopResponse> productsToShopResponse = treeService.getAllTrees();
+        return productsToShopResponse;
+    }
+
+    @GetMapping("/shop/sorting")
+    @Operation (summary = "Selle teenusega filtreerime müügis olevaid puid")
+    public List<ShopResponse> getProductsBySortingParameters(@RequestParam Integer typeId, Integer heightId, Integer countyId) {
+        List<ShopResponse> productsBySortingParameters = treeService.getProductsBySortingParameters(typeId, heightId, countyId);
+        return productsBySortingParameters;
+    }
+
 }
