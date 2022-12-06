@@ -1,5 +1,6 @@
-package ee.valiit.back_vali_kuusk.domain.product.product;
+package ee.valiit.back_vali_kuusk.business.product;
 
+import ee.valiit.back_vali_kuusk.domain.product.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

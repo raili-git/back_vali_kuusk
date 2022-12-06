@@ -85,10 +85,10 @@ public class TreeService {
     }
 
 
-    public List<Product> getAllTreesByUserId(Integer userId) {
+    public List<ProductResponse> getAllTreesByUserId(Integer userId) {
         List<Product> products = productService.findTreesBy(userId);
-        productMapper.
-        return products;
+        List<ProductResponse> productsResponse = productMapper.productsToProductRepose(products);
+        return productsResponse;
 
 
     }
