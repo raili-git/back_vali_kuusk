@@ -29,7 +29,7 @@ public class ProductResponse implements Serializable {
     @NotNull
     private String productStatus;
     @NotNull
-    private byte[] productImage;
+    private String productImage;
     @NotNull
     private Integer productPrice;
 }

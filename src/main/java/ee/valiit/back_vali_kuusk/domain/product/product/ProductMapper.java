@@ -16,7 +16,7 @@ public interface ProductMapper {
     Product newTreeRequestToProduct(NewTreeRequest newTreeRequest);
 
     @Mapping(source = "id", target = "productId")
-    @Mapping(source = "imageData", target = "productImage")
+    @Mapping(source = "imageData", target = "productImage", qualifiedByName = "byteArrayToString")
     @Mapping(source = "type.name", target = "typeName")
     @Mapping(source = "height.gap", target = "heightGap")
     @Mapping(source = "price", target = "productPrice")
@@ -26,6 +26,15 @@ public interface ProductMapper {
     @Named("productImageToImageData")
     static byte[] productImageToImageData(String productImage) {
         return productImage.getBytes(StandardCharsets.UTF_8);
+    }
+
+    @Named("byteArrayToString")
+    static String byteArrayToString(byte[] pictureDataAsByArray) {
+        if (pictureDataAsByArray == null) {
+            return null;
+        }
+        String pictureAsString = new String(pictureDataAsByArray);
+        return pictureAsString;
     }
 
 }
