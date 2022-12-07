@@ -22,7 +22,7 @@ public class TreeOrderController {
     @GetMapping("/to-cart")
     @Operation(summary = " See teenus lisab ostu korvi ehk loob rea order_product tabelisse")
     public  void addToCart(@RequestParam Integer orderId, @RequestParam Integer productId) {
-        treeOrderService.getOrderId(orderId);
+        treeOrderService.createNewOrderProduct(orderId, productId);
     }
 
 }

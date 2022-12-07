@@ -1,4 +1,4 @@
-package ee.valiit.back_vali_kuusk.domain.order;
+package ee.valiit.back_vali_kuusk.domain.order.order;
 
 import org.springframework.stereotype.Service;
 

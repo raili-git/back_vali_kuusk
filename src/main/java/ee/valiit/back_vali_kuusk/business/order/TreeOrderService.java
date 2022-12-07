@@ -1,9 +1,10 @@
 package ee.valiit.back_vali_kuusk.business.order;
 
-import ee.valiit.back_vali_kuusk.domain.order.Order;
-import ee.valiit.back_vali_kuusk.domain.order.OrderService;
+import ee.valiit.back_vali_kuusk.domain.order.order.Order;
+import ee.valiit.back_vali_kuusk.domain.order.order.OrderService;
 import ee.valiit.back_vali_kuusk.domain.order.delivery.Delivery;
 import ee.valiit.back_vali_kuusk.domain.order.delivery.DeliveryService;
+import ee.valiit.back_vali_kuusk.domain.order.orderproduct.OrderProductService;
 import ee.valiit.back_vali_kuusk.domain.order.session.Session;
 import ee.valiit.back_vali_kuusk.domain.order.session.SessionService;
 import ee.valiit.back_vali_kuusk.domain.product.product.Product;
@@ -25,6 +26,9 @@ public class TreeOrderService {
 
     @Resource
     private ProductService productService;
+
+    @Resource
+    private OrderProductService orderProductService;
 
     public OrderResponse getNewOrderId(Integer sessionId) {
         Session session = sessionService.findBySessionId(sessionId);
@@ -51,9 +55,12 @@ public class TreeOrderService {
         return order;
     }
 
-    public void getOrderId(Integer orderId, Integer productId) {
+    public void createNewOrderProduct(Integer orderId, Integer productId) {
         Order order = orderService.findOrderBy(orderId);
         Product product = productService.findProductBy(productId);
+        product.setStatus("P");
+
+        orderProductService.createNewOrderProduct(order,product);
 
     }
 }
