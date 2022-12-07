@@ -12,6 +12,7 @@ import ee.valiit.back_vali_kuusk.domain.product.product.ProductService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class TreeOrderService {
@@ -59,8 +60,18 @@ public class TreeOrderService {
         Order order = orderService.findOrderBy(orderId);
         Product product = productService.findProductBy(productId);
         product.setStatus("P");
-
+        productService.save(product); //Kas on vaja save-ida?
         orderProductService.createNewOrderProduct(order,product);
 
+    }
+
+    public List<Product> getTreeByOrderId(Integer orderId) {
+        return orderProductService.findOrderProductBy(orderId);
+    }
+
+    public void changeTreeStatusBackToA(Integer productId) {
+        Product product = productService.findProductBy(productId);
+        product.setStatus("A");
+        productService.save(product);
     }
 }
