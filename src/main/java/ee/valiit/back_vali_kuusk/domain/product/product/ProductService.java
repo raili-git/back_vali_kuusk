@@ -25,14 +25,18 @@ public class ProductService {
         return products;
     }
 
-    public List<Product> finAll() {
+    public List<Product> findAll() {
         List<Product> products = productRepository.findAll();
 
         return products;
     }
 
     public List<Product> findTreesBy(Integer typeId, Integer heightId, Integer countyId) {
-        List<Product> products = productRepository.findProductBy(typeId, heightId, countyId);
+        List<Product> products = productRepository.findProductBy(typeId, heightId, countyId, "A");
         return products;
+    }
+
+    public Product findProductBy(Integer productId) {
+       return productRepository.findById(productId).get();
     }
 }

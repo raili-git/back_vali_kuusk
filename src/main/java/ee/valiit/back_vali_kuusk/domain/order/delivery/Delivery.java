@@ -1,4 +1,4 @@
-package ee.valiit.back_vali_kuusk.domain.order;
+package ee.valiit.back_vali_kuusk.domain.order.delivery;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

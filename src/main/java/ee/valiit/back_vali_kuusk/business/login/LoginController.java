@@ -29,10 +29,16 @@ public class LoginController {
             @ApiResponse(responseCode = "200", description = "Tagastab login objekti, kus sees on olemas kasutaja userId"),
             @ApiResponse(responseCode = "403", description = "Valed kasutaja rekvisiidid. Ebaõnnestunud sisselogimine", content = @Content(schema = @Schema(implementation = ApiError.class)))
     })
-
     public LoginResponse login(@RequestParam String username, @RequestParam String password) {
         LoginResponse loginResponse = loginService.login(username, password);
         return loginResponse;
+    }
+
+
+    @GetMapping("/session")
+    @Operation(summary = "See teenus annab kodulehe 'home' vaatesse saabujale 'sessionId', mida on vaja anonüümse ostu sooritamiseks")
+    public SessionResponse getNewSessionHash() {
+        return loginService.getNewSessionHash();
     }
 
 }

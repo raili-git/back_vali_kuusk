@@ -95,7 +95,7 @@ public class TreeService {
     }
 
     public List<ShopResponse> getAllTrees() {
-        List<Product> products = productService.finAll();
+        List<Product> products = productService.findAll();
         List<ShopResponse> productsToShopResponse = productMapper.productsToShopResponse(products);
         return productsToShopResponse;
     }

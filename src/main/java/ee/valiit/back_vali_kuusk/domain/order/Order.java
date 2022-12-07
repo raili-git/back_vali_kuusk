@@ -1,5 +1,7 @@
 package ee.valiit.back_vali_kuusk.domain.order;
 
+import ee.valiit.back_vali_kuusk.domain.order.delivery.Delivery;
+import ee.valiit.back_vali_kuusk.domain.order.session.Session;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +21,12 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "delivery_id", nullable = false)
     private Delivery delivery;
+
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "session_id", nullable = false)
+    private Session session;
 
     @Size(max = 1)
     @NotNull
@@ -47,5 +55,6 @@ public class Order {
     @Size(max = 255)
     @Column(name = "address")
     private String address;
+
 
 }

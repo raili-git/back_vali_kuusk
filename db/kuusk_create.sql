@@ -1,6 +1,9 @@
 -- Created by Vertabelo (http://vertabelo.com)
 -- Last modification date: 2022-12-01 07:22:54.038
 
+
+
+
 -- tables
 -- Table: address
 CREATE TABLE address (
@@ -43,10 +46,17 @@ CREATE TABLE height (
                         CONSTRAINT height_pk PRIMARY KEY (id)
 );
 
+CREATE TABLE session (
+                         id serial  NOT NULL,
+                         session_hash varchar(255)  NOT NULL,
+                         CONSTRAINT session_pk PRIMARY KEY (id)
+);
+
 -- Table: order
 CREATE TABLE "order" (
                          id serial  NOT NULL,
                          delivery_id int  NOT NULL,
+                         session_id int  NOT NULL,
                          status char(1)  NOT NULL,
                          first_name varchar(255)  NOT NULL,
                          last_name varchar(255)  NOT NULL,
@@ -114,6 +124,15 @@ ALTER TABLE address ADD CONSTRAINT address_county
 ALTER TABLE contact ADD CONSTRAINT contact_address
     FOREIGN KEY (address_id)
         REFERENCES address (id)
+        NOT DEFERRABLE
+            INITIALLY IMMEDIATE
+;
+
+
+-- Reference: order_delivery (table: order)
+ALTER TABLE "order" ADD CONSTRAINT order_session
+    FOREIGN KEY (session_id)
+        REFERENCES session (id)
         NOT DEFERRABLE
             INITIALLY IMMEDIATE
 ;
