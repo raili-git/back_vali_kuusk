@@ -8,6 +8,7 @@ import ee.valiit.back_vali_kuusk.domain.order.orderproduct.OrderProductService;
 import ee.valiit.back_vali_kuusk.domain.order.session.Session;
 import ee.valiit.back_vali_kuusk.domain.order.session.SessionService;
 import ee.valiit.back_vali_kuusk.domain.product.product.Product;
+import ee.valiit.back_vali_kuusk.domain.product.product.ProductMapper;
 import ee.valiit.back_vali_kuusk.domain.product.product.ProductService;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,9 @@ public class TreeOrderService {
 
     @Resource
     private OrderProductService orderProductService;
+
+    @Resource
+    private ProductMapper productMapper;
 
     public OrderResponse getNewOrderId(Integer sessionId) {
         Session session = sessionService.findBySessionId(sessionId);
@@ -63,10 +67,13 @@ public class TreeOrderService {
         productService.save(product); //Kas on vaja save-ida?
         orderProductService.createNewOrderProduct(order,product);
 
+
     }
 
-    public List<Product> getTreeByOrderId(Integer orderId) {
-        return orderProductService.findOrderProductBy(orderId);
+    public List<ShopResponse> getTreeByOrderId(Integer orderId) {
+        List<Product> products = orderProductService.findOrderProductBy(orderId);
+        List<ShopResponse> productsToCartResponse = productMapper.productsToShopResponse(products);
+        return productsToCartResponse;
     }
 
     public void changeTreeStatusBackToA(Integer productId) {
@@ -79,6 +86,11 @@ public class TreeOrderService {
         long count = orderProductService.getProductCount(orderId);
         return count;
 
+
+    }
+
+    public void removeTreeFromOrderProduct(Integer productId) {
+        orderProductService.deleteTreeById(productId);
 
     }
 }

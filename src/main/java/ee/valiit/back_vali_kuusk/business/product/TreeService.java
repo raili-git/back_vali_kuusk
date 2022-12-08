@@ -5,7 +5,7 @@ import ee.valiit.back_vali_kuusk.domain.product.height.*;
 import ee.valiit.back_vali_kuusk.domain.product.product.Product;
 import ee.valiit.back_vali_kuusk.domain.product.product.ProductMapper;
 import ee.valiit.back_vali_kuusk.domain.product.product.ProductService;
-import ee.valiit.back_vali_kuusk.domain.product.product.ShopResponse;
+import ee.valiit.back_vali_kuusk.business.order.ShopResponse;
 import ee.valiit.back_vali_kuusk.domain.product.type.*;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.User;
 import ee.valiit.back_vali_kuusk.domain.userrole.user.UserService;

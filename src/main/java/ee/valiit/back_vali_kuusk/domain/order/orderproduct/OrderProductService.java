@@ -46,4 +46,8 @@ public class OrderProductService {
         return count;
 
     }
+
+    public void deleteTreeById(Integer productId) {
+        orderProductRepository.deleteById(productId);
+    }
 }

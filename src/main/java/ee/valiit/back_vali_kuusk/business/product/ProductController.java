@@ -2,7 +2,7 @@ package ee.valiit.back_vali_kuusk.business.product;
 
 import ee.valiit.back_vali_kuusk.domain.product.county.CountyDto;
 import ee.valiit.back_vali_kuusk.domain.product.height.HeightDto;
-import ee.valiit.back_vali_kuusk.domain.product.product.ShopResponse;
+import ee.valiit.back_vali_kuusk.business.order.ShopResponse;
 import ee.valiit.back_vali_kuusk.domain.product.type.TypeDto;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +17,6 @@ public class ProductController {
 
     @Resource
     private TreeService treeService;
-
-
-
-
 
     @GetMapping("/type")
     @Operation(summary = "Selle teenusega saad kätte kõik puutüübid")

@@ -1,6 +1,5 @@
 package ee.valiit.back_vali_kuusk.business.order;
 
-import ee.valiit.back_vali_kuusk.domain.product.product.Product;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +19,7 @@ public class TreeOrderController {
         return treeOrderService.getNewOrderId(sessionId);
     }
 
-    @GetMapping("/to-cart")
+    @PostMapping("/to-cart")
     @Operation(summary = " See teenus lisab ostu korvi ehk loob rea order_product tabelisse")
     public void addToCart(@RequestParam Integer orderId, @RequestParam Integer productId) {
         treeOrderService.createNewOrderProduct(orderId, productId);
@@ -28,16 +27,16 @@ public class TreeOrderController {
 
     @GetMapping("/cart")
     @Operation(summary = "Selle teenusega toome ostukorvi vaatesse valitud puud")
-    public List<Product> getTreesByOrderId(@RequestParam Integer orderId) {
-        return treeOrderService.getTreeByOrderId(orderId);
-
-//        Kas siin peaksime hakkama lõpuks tagastama mingisugust ProductResponsei, mis viib ostaja valitud puud talle ostukorvi vaatesse?
+    public List<ShopResponse> getTreesByOrderId(@RequestParam Integer orderId) {
+        List<ShopResponse> productsToCartResponse = treeOrderService.getTreeByOrderId(orderId);
+        return productsToCartResponse;
     }
 
     @PatchMapping("/cart/remove")
     @Operation(summary = "Selle teenusega saab ostja eemaldada ostukorvi lisatud puu")
     public void removeTreeFromCart(@RequestParam Integer productId) {
         treeOrderService.changeTreeStatusBackToA(productId);
+        treeOrderService.removeTreeFromOrderProduct(productId);
     }
 
     @GetMapping("/count")

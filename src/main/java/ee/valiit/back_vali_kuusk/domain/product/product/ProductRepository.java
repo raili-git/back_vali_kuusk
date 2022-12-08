@@ -10,6 +10,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("select p from Product p where p.user.id = ?1 and p.status = ?2")
     List<Product> findTreesBy(Integer userId, String status);
 
+    @Query("select p from Product p where p.status = ?1")
+    List<Product> findAllByStatus(String status);
+
+
+
 
     @Query( // Toob andmebaasist välja aktiivse staatusega  puud, mis on filtreeritud puutüübi, puu kõrguse ja maakonna järgi
             value = "SELECT *\n" +
