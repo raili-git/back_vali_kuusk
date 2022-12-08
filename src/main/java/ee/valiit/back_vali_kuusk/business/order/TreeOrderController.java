@@ -20,7 +20,7 @@ public class TreeOrderController {
         return treeOrderService.getNewOrderId(sessionId);
     }
 
-    @GetMapping("/to-cart")
+    @PostMapping("/to-cart")
     @Operation(summary = " See teenus lisab ostu korvi ehk loob rea order_product tabelisse")
     public void addToCart(@RequestParam Integer orderId, @RequestParam Integer productId) {
         treeOrderService.createNewOrderProduct(orderId, productId);
