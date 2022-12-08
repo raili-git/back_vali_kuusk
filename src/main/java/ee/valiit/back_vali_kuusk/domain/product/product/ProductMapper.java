@@ -3,6 +3,7 @@ package ee.valiit.back_vali_kuusk.domain.product.product;
 import ee.valiit.back_vali_kuusk.business.order.ShopResponse;
 import ee.valiit.back_vali_kuusk.business.product.NewTreeRequest;
 import ee.valiit.back_vali_kuusk.business.product.ProductResponse;
+import ee.valiit.back_vali_kuusk.business.product.UpdateTreeRequest;
 import org.mapstruct.*;
 
 import java.nio.charset.StandardCharsets;

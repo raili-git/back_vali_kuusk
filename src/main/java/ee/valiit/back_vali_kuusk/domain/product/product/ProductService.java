@@ -38,4 +38,10 @@ public class ProductService {
     public Product findProductBy(Integer productId) {
        return productRepository.findById(productId).get();
     }
+
+
+    public Product findById(Integer productId) {
+        Product product = productRepository.findById(productId).get();
+        return product;
+    }
 }

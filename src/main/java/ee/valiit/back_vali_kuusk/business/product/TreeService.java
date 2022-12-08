@@ -90,8 +90,6 @@ public class TreeService {
         List<Product> products = productService.findTreesBy(userId);
         List<ProductResponse> productsResponse = productMapper.productsToProductResponse(products);
         return productsResponse;
-
-
     }
 
     public List<ShopResponse> getAllTrees() {
@@ -104,5 +102,18 @@ public class TreeService {
         List<Product> products = productService.findTreesBy(typeId, heightId, countyId);
         List<ShopResponse> productsToShopResponse = productMapper.productsToShopResponse(products);
         return productsToShopResponse;
+    }
+
+    public void changeTreeParameters(Integer productId, UpdateTreeRequest treeUpdate) {
+        Product product = productService.findById(productId);
+        Type type = typeService.findTypeBy(treeUpdate.getTypeId());
+        Height height = heightService.findHeightBy(treeUpdate.getHeightId());
+
+        product.setType(type);
+        product.setHeight(height);
+        product.setPrice(treeUpdate.getPrice());
+
+        productService.save(product);
+
     }
 }

@@ -59,10 +59,18 @@ public class ProductController {
     }
 
     @GetMapping("/shop/sorting")
-    @Operation (summary = "Selle teenusega filtreerime müügis olevaid puid")
+    @Operation (summary = "Selle teenusega filtreerime müügis olevaid puid ostja vaates")
     public List<ShopResponse> getProductsBySortingParameters(@RequestParam Integer typeId, Integer heightId, Integer countyId) {
         List<ShopResponse> productsBySortingParameters = treeService.getProductsBySortingParameters(typeId, heightId, countyId);
         return productsBySortingParameters;
+
     }
+
+    @PutMapping("/modify-tree")
+    @Operation (summary = "Selle teenusega saame muuta müügis oleva puud parameetreid")
+    public void changeTreeParameters (@RequestParam Integer productId, @RequestBody UpdateTreeRequest treeUpdate) {
+      treeService.changeTreeParameters(productId, treeUpdate);
+    }
+
 
 }
