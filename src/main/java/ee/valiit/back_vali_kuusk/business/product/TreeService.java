@@ -105,4 +105,10 @@ public class TreeService {
         List<ShopResponse> productsToShopResponse = productMapper.productsToShopResponse(products);
         return productsToShopResponse;
     }
+
+    public void changeTreeStatusToD(Integer productId) {
+        Product product = productService.findProductBy(productId);
+        product.setStatus("D");
+        productService.save(product);
+    }
 }

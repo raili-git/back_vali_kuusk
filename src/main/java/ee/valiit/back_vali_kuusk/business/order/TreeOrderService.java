@@ -85,8 +85,6 @@ public class TreeOrderService {
     public long getProductCount(Integer orderId) {
         long count = orderProductService.getProductCount(orderId);
         return count;
-
-
     }
 
     public void removeTreeFromOrderProduct(Integer productId) {

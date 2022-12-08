@@ -65,4 +65,10 @@ public class ProductController {
         return productsBySortingParameters;
     }
 
+    @PatchMapping("/trees/remove")
+    @Operation(summary = "Selle teenusega saab müüja eemaldada lisatud puu")
+    public void removeTreeFromSellingList (@RequestParam Integer productId) {
+        treeService.changeTreeStatusToD(productId);
+    }
+
 }
