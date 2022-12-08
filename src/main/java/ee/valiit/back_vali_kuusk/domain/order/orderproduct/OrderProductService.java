@@ -40,4 +40,10 @@ public class OrderProductService {
         }
         return products;
     }
+
+    public long getProductCount(Integer orderId) {
+        long count = orderProductRepository.count(orderId);
+        return count;
+
     }
+}

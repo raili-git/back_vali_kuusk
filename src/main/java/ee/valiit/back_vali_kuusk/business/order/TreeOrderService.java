@@ -74,4 +74,11 @@ public class TreeOrderService {
         product.setStatus("A");
         productService.save(product);
     }
+
+    public long getProductCount(Integer orderId) {
+        long count = orderProductService.getProductCount(orderId);
+        return count;
+
+
+    }
 }

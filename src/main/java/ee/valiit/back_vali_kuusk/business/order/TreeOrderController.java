@@ -22,23 +22,29 @@ public class TreeOrderController {
 
     @GetMapping("/to-cart")
     @Operation(summary = " See teenus lisab ostu korvi ehk loob rea order_product tabelisse")
-    public  void addToCart(@RequestParam Integer orderId, @RequestParam Integer productId) {
+    public void addToCart(@RequestParam Integer orderId, @RequestParam Integer productId) {
         treeOrderService.createNewOrderProduct(orderId, productId);
     }
 
     @GetMapping("/cart")
-    @Operation (summary = "Selle teenusega toome ostukorvi vaatesse valitud puud")
-    public List<Product> getTreesByOrderId (@RequestParam Integer orderId) {
+    @Operation(summary = "Selle teenusega toome ostukorvi vaatesse valitud puud")
+    public List<Product> getTreesByOrderId(@RequestParam Integer orderId) {
         return treeOrderService.getTreeByOrderId(orderId);
 
 //        Kas siin peaksime hakkama lõpuks tagastama mingisugust ProductResponsei, mis viib ostaja valitud puud talle ostukorvi vaatesse?
     }
 
     @PatchMapping("/cart/remove")
-    @Operation (summary = "Selle teenusega saab ostja eemaldada ostukorvi lisatud puu")
-    public void removeTreeFromCart (@RequestParam Integer productId) {
+    @Operation(summary = "Selle teenusega saab ostja eemaldada ostukorvi lisatud puu")
+    public void removeTreeFromCart(@RequestParam Integer productId) {
         treeOrderService.changeTreeStatusBackToA(productId);
     }
 
+    @GetMapping("/count")
+    @Operation(summary = "Selle teenusega näitame ostukorvi ikooni peal ostukorvis olevate puude arvu")
+    public long getProductCount(@RequestParam Integer orderId) {
+        long count = treeOrderService.getProductCount(orderId);
+        return count;
+    }
 
 }

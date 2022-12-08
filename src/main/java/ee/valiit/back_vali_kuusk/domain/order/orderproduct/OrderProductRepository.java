@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface OrderProductRepository extends JpaRepository<OrderProduct, Integer> {
+    @Query("select count(o) from OrderProduct o where o.order.id = ?1")
+    long count(Integer id);
+
     @Query("select o from OrderProduct o where o.order.id = ?1")
     List<OrderProduct> findAll(Integer id);
 
